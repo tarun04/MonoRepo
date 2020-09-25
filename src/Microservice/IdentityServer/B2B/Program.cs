@@ -18,9 +18,12 @@ namespace MonoRepo.Microservice.IdentityServer.B2B
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+               .ConfigureWebHostDefaults(webBuilder =>
+               {
+                   webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+                   {
+                       config.AddCommandLine(args);
+                   }).UseStartup<Startup>();
+               });
     }
 }
