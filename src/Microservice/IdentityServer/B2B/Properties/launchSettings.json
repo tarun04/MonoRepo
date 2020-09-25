@@ -10,11 +10,11 @@
   "profiles": {
     "MonoRepo.Microservice.IdentityServer.B2B": {
       "commandName": "Project",
-      //"launchBrowser": true,
+      "launchBrowser": true,
       "commandLineArgs": "--use-dev-data false",
       "applicationUrl": "https://localhost:5001",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Local"
       }
     }
   }
