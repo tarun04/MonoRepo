@@ -14,19 +14,23 @@ namespace MonoRepo.Microservice.IdentityServer.B2C
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment environment)
         {
             Configuration = configuration;
+            Environment = environment;
         }
 
         public IConfiguration Configuration { get; }
+        public IWebHostEnvironment Environment { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
 
-            services.RegisterDbContext(Configuration);
+            services
+                .RegisterDbContext(Configuration)
+                .AddIdentity(Configuration, Environment);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +47,7 @@ namespace MonoRepo.Microservice.IdentityServer.B2C
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
+            app.UseIdentityServer();
             app.UseStaticFiles();
 
             app.UseRouting();
