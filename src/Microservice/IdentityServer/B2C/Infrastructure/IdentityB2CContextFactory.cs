@@ -7,17 +7,17 @@ using System;
 using System.IO;
 using System.Reflection;
 
-namespace MonoRepo.Microservice.IdentityServer.B2B.Infrastructure
+namespace MonoRepo.Microservice.IdentityServer.B2C.Infrastructure
 {
-    public class IdentityB2BContextFactory : DesignTimeDbContextFactoryBase<IdentityB2BDbContext>
+    public class IdentityB2CContextFactory : DesignTimeDbContextFactoryBase<IdentityB2CDbContext>
     {
-        public IdentityB2BContextFactory()
+        public IdentityB2CContextFactory()
             : base("DefaultConnection", typeof(Startup).GetTypeInfo().Assembly.GetName().Name)
         { }
 
-        protected override IdentityB2BDbContext CreateNewInstance(DbContextOptions<IdentityB2BDbContext> options)
+        protected override IdentityB2CDbContext CreateNewInstance(DbContextOptions<IdentityB2CDbContext> options)
         {
-            return new IdentityB2BDbContext(options);
+            return new IdentityB2CDbContext(options);
         }
     }
 
@@ -45,7 +45,7 @@ namespace MonoRepo.Microservice.IdentityServer.B2B.Infrastructure
         }
     }
 
-    public abstract class DesignTimeDbContextFactoryBase<TContext> 
+    public abstract class DesignTimeDbContextFactoryBase<TContext>
         : IDesignTimeDbContextFactory<TContext> where TContext : DbContext
     {
         protected string ConnectionStringName { get; }

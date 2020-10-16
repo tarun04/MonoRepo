@@ -8,6 +8,8 @@ namespace MonoRepo.Microservice.IdentityServer.B2C.Infrastructure.EntityConfigur
     {
         public void Configure(EntityTypeBuilder<Role> builder)
         {
+            builder.ToTable("AspNetRoles");
+
             builder.Property(p => p.ProductId).IsRequired();
             builder.Property(p => p.IsProductDefault).HasDefaultValue(false);
         }

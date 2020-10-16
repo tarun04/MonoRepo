@@ -8,6 +8,8 @@ namespace MonoRepo.Microservice.IdentityServer.B2C.Infrastructure.EntityConfigur
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
+            builder.ToTable("AspNetUsers");
+
             builder.Property(p => p.TenantId).IsRequired();
             builder.Property(p => p.FirstName).IsRequired();
             builder.Property(p => p.LastName).IsRequired();
