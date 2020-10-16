@@ -1,11 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace MonoRepo.Microservice.IdentityServer.B2C
 {
@@ -20,7 +15,10 @@ namespace MonoRepo.Microservice.IdentityServer.B2C
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+                    {
+                        config.AddCommandLine(args);
+                    }).UseStartup<Startup>();
                 });
     }
 }

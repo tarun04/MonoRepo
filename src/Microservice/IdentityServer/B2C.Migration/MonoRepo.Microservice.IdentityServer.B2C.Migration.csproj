@@ -1,7 +1,26 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="CommandLineParser" Version="2.8.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\B2C\MonoRepo.Microservice.IdentityServer.B2C.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="appsettings.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="appsettings.Unix.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+			<DependentUpon>appsettings.json</DependentUpon>
+		</None>
+	</ItemGroup>
 
 </Project>

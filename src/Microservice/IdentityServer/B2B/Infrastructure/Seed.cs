@@ -13,7 +13,7 @@ namespace MonoRepo.Microservice.IdentityServer.B2B.Infrastructure
         private static readonly Guid guidDefault = new Guid("b54c9d8f-74f1-482a-a633-604f90f71201");
         private static readonly Guid guidLocalHost = new Guid("2a8c4e05-25cf-4ce1-81b8-6202bcee8a2b");
 
-        internal static void EnsureSeedData(IApplicationBuilder app)
+        public static void EnsureSeedData(IApplicationBuilder app)
         {
             var context = app.ApplicationServices.GetService<IdentityB2BDbContext>();
             var userMgr = app.ApplicationServices.GetRequiredService<UserManager<User>>();
@@ -37,7 +37,7 @@ namespace MonoRepo.Microservice.IdentityServer.B2B.Infrastructure
                 TenantId = guidDefault,
                 IsEnabled = true,
                 EmailConfirmed = true
-            }, "").Result;
+            }, "MonoRepo").Result;
 
             _ = userMgr.CreateAsync(new User
             {
@@ -48,7 +48,7 @@ namespace MonoRepo.Microservice.IdentityServer.B2B.Infrastructure
                 TenantId = guidLocalHost,
                 IsEnabled = true,
                 EmailConfirmed = true
-            }, "").Result;
+            }, "MonoRepo").Result;
         }
 
         private static void AddRoles(RoleManager<Role> roleMgr)
