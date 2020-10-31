@@ -61,13 +61,13 @@ namespace MonoRepo.Microservice.IdentityServer.B2B.Controllers
         }
 
         [HttpPut("user")]
-        public async Task<IActionResult> UpdateRole([FromBody] UpdateUserCommand command)
+        public async Task<IActionResult> UpdateUser([FromBody] UpdateUserCommand command)
         {
             return Ok(await mediator.Send(command).ConfigureAwait(false));
         }
 
         [HttpDelete("user/{userId}")]
-        public async Task<IActionResult> DeleteRole([FromRoute] Guid userId)
+        public async Task<IActionResult> DeleteUser([FromRoute] Guid userId)
         {
             return Ok(await mediator.Send(new DeleteUserCommand { Id = userId }).ConfigureAwait(false));
         }
