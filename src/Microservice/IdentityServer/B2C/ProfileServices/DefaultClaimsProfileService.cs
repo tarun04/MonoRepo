@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using MonoRepo.Framework.Core.Extensions;
 using MonoRepo.Framework.Core.Security;
 using MonoRepo.Microservice.IdentityServer.B2C.Domain.Entities;
+using MonoRepo.Microservice.IdentityServer.B2C.Infrastructure;
 using MonoRepo.Microservice.IdentityServer.B2C.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -25,14 +26,18 @@ namespace MonoRepo.Microservice.IdentityServer.B2C.ProfileServices
         public const string ClaimsLastName = "last_name";
 
         private readonly UserManager<User> userManager;
+        private readonly IdentityB2CDbContext context;
         private readonly IUserClaimsPrincipalFactory<User> claimsFactory;
         private readonly ITenantService tenantService;
+
         public DefaultClaimsProfileService(
             UserManager<User> userManager,
+            IdentityB2CDbContext context,
             IUserClaimsPrincipalFactory<User> claimsFactory,
             ITenantService tenantService)
         {
             this.userManager = userManager;
+            this.context = context;
             this.claimsFactory = claimsFactory;
             this.tenantService = tenantService;
         }

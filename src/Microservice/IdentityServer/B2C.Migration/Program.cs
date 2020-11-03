@@ -24,12 +24,12 @@ namespace MonoRepo.Microservice.IdentityServer.B2C.Migration
             Console.WriteLine("Creating Contexts");
             var configContext = new ConfigurationContextDesignTimeFactory().CreateDbContext(null);
             var persistedGrantContext = new PersistedGrantContextDesignTimeFactory().CreateDbContext(null);
-            var identityDbContext = new IdentityB2CContextFactory().CreateDbContext(null);
+            var identityB2CContext = new IdentityB2CContextFactory().CreateDbContext(null);
 
             Console.WriteLine("Migrating database");
             configContext.Database.Migrate();
             persistedGrantContext.Database.Migrate();
-            identityDbContext.Database.Migrate();
+            identityB2CContext.Database.Migrate();
 
             Console.WriteLine("Seeding Identity Data");
             Seed.SeedIdentityData(configContext);

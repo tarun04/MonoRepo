@@ -17,8 +17,8 @@ namespace MonoRepo.Microservice.IdentityServer.B2C.Infrastructure
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.ApplyConfigurationsFromAssembly(typeof(UserConfiguration).Assembly);
             base.OnModelCreating(builder);
+            builder.ApplyConfigurationsFromAssembly(typeof(UserConfiguration).Assembly);
         }
     }
 }

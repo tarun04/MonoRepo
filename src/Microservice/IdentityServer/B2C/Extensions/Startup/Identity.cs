@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MonoRepo.Microservice.IdentityServer.B2C.Domain.Entities;
 using MonoRepo.Microservice.IdentityServer.B2C.Infrastructure;
+using MonoRepo.Microservice.IdentityServer.B2C.ProfileServices;
 using System;
 using System.Reflection;
 
@@ -61,7 +62,8 @@ namespace MonoRepo.Microservice.IdentityServer.B2C.Extensions.Startup
                     // this enables automatic token cleanup. this is optional.
                     options.EnableTokenCleanup = true;
                 })
-                .AddAspNetIdentity<User>();
+                .AddAspNetIdentity<User>()
+                .AddProfileService<DefaultClaimsProfileService>();
 
             if (environment.IsProduction())
                 throw new NotImplementedException("Identity server is not currently implemented for production!");

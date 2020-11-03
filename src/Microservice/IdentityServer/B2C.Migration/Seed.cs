@@ -26,7 +26,7 @@ namespace MonoRepo.Microservice.IdentityServer.B2C.Migration
                     context.ApiResources.Add(apiResource.ToEntity());
             }
 
-            if (!context.ChangeTracker.HasChanges())
+            if (context.ChangeTracker.HasChanges())
                 context.SaveChanges();
         }
     }

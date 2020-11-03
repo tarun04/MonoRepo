@@ -17,7 +17,8 @@ namespace MonoRepo.Microservice.IdentityServer.B2B.Infrastructure
                                                     IdentityRoleClaim<Guid>,
                                                     IdentityUserToken<Guid>>
     {
-        public IdentityB2BDbContext(DbContextOptions<IdentityB2BDbContext> options) : base(options)
+        public IdentityB2BDbContext(DbContextOptions<IdentityB2BDbContext> options)
+            : base(options)
         { }
 
         protected override void OnModelCreating(ModelBuilder builder)

@@ -20,6 +20,8 @@ namespace MonoRepo.Microservice.IdentityServer.B2B.Migration
 
             Console.WriteLine("Seeding Identity data");
             Seed.SeedIdentityData(configContext);
+
+            Console.WriteLine("Complete.");
         }
     }
 }
