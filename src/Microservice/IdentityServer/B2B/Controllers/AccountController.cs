@@ -53,6 +53,28 @@ namespace MonoRepo.Microservice.IdentityServer.B2B.Controllers
         }
 
         /// <summary>
+        /// Attempts to get the user name by email.
+        /// </summary>
+        /// <param name="email">Email address of the user.</param>
+        /// <returns>User name if email exists.</returns>
+        [HttpGet("[action]")]
+        public async Task<IActionResult> FindUser([FromQuery(Name = "Email")] string email)
+        {
+            try
+            {
+                var user = await userManager.FindByEmailAsync(email);
+                if (user == null) return Ok("");
+                return Ok(user.FirstName);
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError(string.Empty, "The Email address is incorrect.");
+                logger.LogDebug($"User not found: {email}");
+                throw;
+            }
+        }
+
+        /// <summary>
         /// Attempts to login the user by email and password.
         /// </summary>
         /// <param name="loginViewModel">Viewmodel containing username, password, and redirect url.</param>
@@ -64,17 +86,11 @@ namespace MonoRepo.Microservice.IdentityServer.B2B.Controllers
             {
                 var user = await userManager.FindByEmailAsync(loginViewModel.Email);
 
-                if (string.IsNullOrEmpty(loginViewModel.Email) || string.IsNullOrEmpty(loginViewModel.Password))
-                {
-                    return View(loginViewModel);
-                }
-
                 if (user == null)
                 {
-                    ModelState.AddModelError(string.Empty, "The Email address or Password is incorrect.");
-                    loginViewModel.Password = string.Empty;
+                    ModelState.AddModelError(string.Empty, "The Email address is incorrect.");
                     logger.LogDebug($"User not found: {loginViewModel.Email}");
-                    return View(loginViewModel);
+                    return Ok(false);
                 }
 
                 var result = await signInManager.PasswordSignInAsync(user,
@@ -84,19 +100,18 @@ namespace MonoRepo.Microservice.IdentityServer.B2B.Controllers
                 if (result.Succeeded)
                 {
                     logger.LogDebug($"Login Successful redirecting user: {loginViewModel.Email}");
-                    return Redirect(loginViewModel.ReturnUrl);
+                    return Ok(true);
                 }
 
                 logger.LogDebug($"Login Failed for user :{loginViewModel.Email}");
-                ModelState.AddModelError(string.Empty, "The Email address or Password is incorrect.");
-                loginViewModel.Password = string.Empty;
-                return View(loginViewModel);
+                ModelState.AddModelError(string.Empty, "The Password is incorrect.");
+                return Ok(false);
             }
             catch (Exception ex)
             {
                 ModelState.AddModelError("DEBUG", ex.ToString());
                 logger.LogCritical(ex, $"Error logging in for user: {loginViewModel.Email}");
-                return View(loginViewModel);
+                throw;
             }
         }
 

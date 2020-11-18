@@ -69,6 +69,28 @@ namespace MonoRepo.Microservice.IdentityServer.B2C.Controllers
         }
 
         /// <summary>
+        /// Attempts to get the user name by email.
+        /// </summary>
+        /// <param name="email">Email address of the user.</param>
+        /// <returns>User name if email exists.</returns>
+        [HttpGet("[action]")]
+        public async Task<IActionResult> FindUser([FromQuery(Name = "Email")] string email)
+        {
+            try
+            {
+                var user = await userManager.FindByEmailAsync(email);
+                if (user == null) return Ok("");
+                return Ok(user.FirstName);
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError(string.Empty, "The Email address is incorrect.");
+                logger.LogDebug($"User not found: {email}");
+                throw;
+            }
+        }
+
+        /// <summary>
         /// Attempts to login the user by email and password.
         /// </summary>
         /// <param name="loginViewModel">Viewmodel containing username, password, and redirect url.</param>
@@ -76,52 +98,63 @@ namespace MonoRepo.Microservice.IdentityServer.B2C.Controllers
         [HttpPost("[action]")]
         public async Task<IActionResult> Login([FromForm] LoginViewModel loginViewModel)
         {
-            // Try to get the tenant name fromthe return url.
-            var context = await interactionService.GetAuthorizationContextAsync(loginViewModel.ReturnUrl);
-            var tenantName = context?.Parameters[Constants.TenantName];
-            // Check if tenant name is null, if so return error.
-            if (string.IsNullOrEmpty(tenantName))
-                return View("Error");
-
-            // Check for a possible port number.
-            if (tenantName.Contains(':'))
-                tenantName = tenantName.Split(':')[0];
-
-            // Retrieve tenant and check if it was found, if not return error view.
-            var tenant = await tenantService.GetTenantByName(tenantName);
-            if (tenant == null || string.IsNullOrEmpty(tenant.Id))
-                return View("Error");
-
-            // Retrieve user by email.
-            var matchedUser = await identityB2CDbContext.AspNetUsers
-                .AsNoTracking()
-                .FirstOrDefaultAsync(x => x.Email == loginViewModel.Email && x.TenantId == new Guid(tenant.Id))
-                .ConfigureAwait(false);
-
-            // Check if user has entered email
-            if (string.IsNullOrEmpty(loginViewModel.Email) || string.IsNullOrEmpty(loginViewModel.Password))
+            try
             {
-                return View(loginViewModel);
+                // Try to get the tenant name fromthe return url.
+                var context = await interactionService.GetAuthorizationContextAsync(loginViewModel.ReturnUrl);
+                var tenantName = context?.Parameters[Constants.TenantName];
+                // Check if tenant name is null, if so return error.
+                if (string.IsNullOrEmpty(tenantName))
+                {
+                    logger.LogDebug($"Tenant not found: {tenantName}");
+                    return Ok(false);
+                }
+
+                // Check for a possible port number.
+                if (tenantName.Contains(':'))
+                    tenantName = tenantName.Split(':')[0];
+
+                // Retrieve tenant and check if it was found, if not return error view.
+                var tenant = await tenantService.GetTenantByName(tenantName);
+                if (tenant == null || string.IsNullOrEmpty(tenant.Id))
+                {
+                    logger.LogDebug($"Tenant not found: {tenantName}");
+                    return Ok(false);
+                }
+
+                // Retrieve user by email.
+                var user = await identityB2CDbContext.AspNetUsers
+                                                     .AsNoTracking()
+                                                     .FirstOrDefaultAsync(x => x.Email == loginViewModel.Email && x.TenantId == new Guid(tenant.Id))
+                                                     .ConfigureAwait(false);
+
+                if (user == null)
+                {
+                    ModelState.AddModelError(string.Empty, "The Email address is incorrect.");
+                    logger.LogDebug($"User not found: {loginViewModel.Email}");
+                    return Ok(false);
+                }
+
+                var result = await signInManager.PasswordSignInAsync(user,
+                                                                     loginViewModel.Password,
+                                                                     loginViewModel.RememberLogin,
+                                                                     false);
+                if (result.Succeeded)
+                {
+                    logger.LogDebug($"Login Successful redirecting user: {loginViewModel.Email}");
+                    return Ok(true);
+                }
+
+                logger.LogDebug($"Login Failed for user :{loginViewModel.Email}");
+                ModelState.AddModelError(string.Empty, "The Password is incorrect.");
+                return Ok(false);
             }
-            // Check that a user was found.
-            else if (matchedUser == null)
+            catch (Exception ex)
             {
-                ModelState.AddModelError(string.Empty, "The username or password is incorrect.");
-                loginViewModel.Password = string.Empty;
-                return View(loginViewModel);
+                ModelState.AddModelError("DEBUG", ex.ToString());
+                logger.LogCritical(ex, $"Error logging in for user: {loginViewModel.Email}");
+                throw;
             }
-
-            var result = await signInManager.PasswordSignInAsync(matchedUser,
-                loginViewModel.Password,
-                loginViewModel.RememberLogin,
-                false).ConfigureAwait(false);
-
-
-            if (result.Succeeded) return Redirect(loginViewModel.ReturnUrl);
-
-            ModelState.AddModelError(string.Empty, "The username or password is incorrect.");
-            loginViewModel.Password = string.Empty;
-            return View(loginViewModel);
         }
 
         /// <summary>
