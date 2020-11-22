@@ -6,16 +6,15 @@ namespace MonoRepo.Microservice.Tenant.Domain.Entities
 {
     public class Tenant : Entity
     {
-        // Guid or String?
-        public string Id { get; private set; }
+        public Guid Id { get; private set; }
         public string Name { get; private set; }
         public string DisplayName { get; private set; }
 
         public ICollection<TenantProduct> TenantProducts { get; set; }
 
-        public Tenant(string id, string name, string displayName)
+        public Tenant(Guid id, string name, string displayName)
         {
-            if (string.IsNullOrEmpty(id)) throw new ArgumentNullException(nameof(id));
+            if (id == Guid.Empty) throw new ArgumentNullException(nameof(id));
             if (string.IsNullOrEmpty(name)) throw new ArgumentNullException(nameof(name));
             if (string.IsNullOrEmpty(displayName)) throw new ArgumentNullException(nameof(displayName));
 
@@ -24,6 +23,6 @@ namespace MonoRepo.Microservice.Tenant.Domain.Entities
             DisplayName = displayName;
         }
 
-        public Tenant(string name, string displayName) : this(Guid.NewGuid().ToString(), name, displayName) { }
+        public Tenant(string name, string displayName) : this(Guid.NewGuid(), name, displayName) { }
     }
 }

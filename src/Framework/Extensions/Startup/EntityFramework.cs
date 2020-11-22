@@ -11,11 +11,9 @@ namespace MonoRepo.Framework.Extensions.Startup
     {
         public static IServiceCollection RegisterDbContext<T>(this IServiceCollection services, IConfiguration configuration) where T : DbContext
         {
-            services.AddEntityFrameworkSqlServer()
-                    .AddDbContext<T>(options =>
+            services.AddDbContext<T>(options =>
                     {
                         options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
-                        options.EnableSensitiveDataLogging(true);
                         options.EnableDetailedErrors(true);
                     });
             return services;

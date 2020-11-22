@@ -1,11 +1,12 @@
-﻿using System;
+﻿using MonoRepo.Framework.Core.Domain;
+using System;
 
 namespace MonoRepo.Microservice.Tenant.Domain.Entities
 {
-    public class TenantProduct
+    public class TenantProduct : Entity
     {
-        public string TenantId { get; set; }
-        public string ProductId { get; set; }
+        public Guid TenantId { get; set; }
+        public Guid ProductId { get; set; }
         public DateTime PurchasedDate { get; set; }
         public DateTime GoLiveDate { get; set; }
         public bool IsActive { get; set; }

@@ -1,13 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using MonoRepo.Framework.Infrastructure.EntityConfigurations;
 using MonoRepo.Microservice.Tenant.Domain.Entities;
 
 namespace MonoRepo.Microservice.Tenant.Infrastructure.EntityConfigurations
 {
-    public class TenantProductConfiguration : IEntityTypeConfiguration<TenantProduct>
+    public class TenantProductConfiguration : EntityConfiguration<TenantProduct>
     {
-        public void Configure(EntityTypeBuilder<TenantProduct> builder)
+        public override void Configure(EntityTypeBuilder<TenantProduct> builder)
         {
+            base.Configure(builder);
             builder.HasKey(k => new { k.TenantId, k.ProductId });
             builder.Property(p => p.ProductId).IsRequired();
             builder.Property(p => p.TenantId).IsRequired();

@@ -1,0 +1,8 @@
+﻿{
+  "profiles": {
+    "EBE.Ships.Microservice.Tenant.Migration": {
+      "commandName": "Project",
+      "commandLineArgs": "--use-dev-data true"
+    }
+  }
+}

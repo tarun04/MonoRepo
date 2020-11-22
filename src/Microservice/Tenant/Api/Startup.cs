@@ -7,6 +7,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using MonoRepo.Framework.Extensions.Startup;
+using MonoRepo.Microservice.Tenant.Extensions.Startup;
+using MonoRepo.Microservice.Tenant.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +31,11 @@ namespace MonoRepo.Microservice.Tenant.Api
         {
 
             services.AddControllers();
+
+            services
+                .RegisterScopedServices(Configuration)
+                .RegisterDbContext<TenantDbContext>(Configuration);
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MonoRepo.Microservice.Tenant.Api", Version = "v1" });
