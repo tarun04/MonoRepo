@@ -1,39 +1,39 @@
 {
   "version": 1,
   "projects": {
-    "monorepo": {
+    "application-b2b": {
       "projectType": "application",
       "schematics": {
-        "@nrwl/angular:component": {
+        "@schematics/angular:component": {
           "style": "scss"
         }
       },
-      "root": "apps/monorepo",
-      "sourceRoot": "apps/monorepo/src",
+      "root": "apps/application-b2b",
+      "sourceRoot": "apps/application-b2b/src",
       "prefix": "monorepo",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/apps/monorepo",
-            "index": "apps/monorepo/src/index.html",
-            "main": "apps/monorepo/src/main.ts",
-            "polyfills": "apps/monorepo/src/polyfills.ts",
-            "tsConfig": "apps/monorepo/tsconfig.app.json",
+            "outputPath": "dist/apps/application-b2b",
+            "index": "apps/application-b2b/src/index.html",
+            "main": "apps/application-b2b/src/main.ts",
+            "polyfills": "apps/application-b2b/src/polyfills.ts",
+            "tsConfig": "apps/application-b2b/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "apps/monorepo/src/favicon.ico",
-              "apps/monorepo/src/assets"
+              "apps/application-b2b/src/favicon.ico",
+              "apps/application-b2b/src/assets"
             ],
-            "styles": ["apps/monorepo/src/styles.scss"],
+            "styles": ["apps/application-b2b/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "apps/monorepo/src/environments/environment.ts",
-                  "with": "apps/monorepo/src/environments/environment.prod.ts"
+                  "replace": "apps/application-b2b/src/environments/environment.ts",
+                  "with": "apps/application-b2b/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -62,73 +62,194 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "monorepo:build"
+            "browserTarget": "application-b2b:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "monorepo:build:production"
+              "browserTarget": "application-b2b:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "monorepo:build"
+            "browserTarget": "application-b2b:build"
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "apps/monorepo/tsconfig.app.json",
-              "apps/monorepo/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!apps/monorepo/**"]
+            "lintFilePatterns": ["apps/application-b2b/src/**/*.ts"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/monorepo/jest.config.js",
-            "tsConfig": "apps/monorepo/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "apps/monorepo/src/test-setup.ts"
+            "jestConfig": "apps/application-b2b/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }
     },
-    "monorepo-e2e": {
-      "root": "apps/monorepo-e2e",
-      "sourceRoot": "apps/monorepo-e2e/src",
+    "application-b2b-e2e": {
+      "root": "apps/application-b2b-e2e",
+      "sourceRoot": "apps/application-b2b-e2e/src",
       "projectType": "application",
       "architect": {
         "e2e": {
           "builder": "@nrwl/cypress:cypress",
           "options": {
-            "cypressConfig": "apps/monorepo-e2e/cypress.json",
-            "tsConfig": "apps/monorepo-e2e/tsconfig.e2e.json",
-            "devServerTarget": "monorepo:serve"
+            "cypressConfig": "apps/application-b2b-e2e/cypress.json",
+            "tsConfig": "apps/application-b2b-e2e/tsconfig.e2e.json",
+            "devServerTarget": "application-b2b:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "monorepo:serve:production"
+              "devServerTarget": "application-b2b:serve:production"
             }
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": ["apps/monorepo-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/monorepo-e2e/**"]
+            "lintFilePatterns": ["apps/application-b2b-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "application-b2c": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/application-b2c",
+      "sourceRoot": "apps/application-b2c/src",
+      "prefix": "monorepo",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/application-b2c",
+            "index": "apps/application-b2c/src/index.html",
+            "main": "apps/application-b2c/src/main.ts",
+            "polyfills": "apps/application-b2c/src/polyfills.ts",
+            "tsConfig": "apps/application-b2c/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/application-b2c/src/favicon.ico",
+              "apps/application-b2c/src/assets"
+            ],
+            "styles": ["apps/application-b2c/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/application-b2c/src/environments/environment.ts",
+                  "with": "apps/application-b2c/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "application-b2c:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "application-b2c:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "application-b2c:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/application-b2c/src/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/application-b2c/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "application-b2c-e2e": {
+      "root": "apps/application-b2c-e2e",
+      "sourceRoot": "apps/application-b2c-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/application-b2c-e2e/cypress.json",
+            "tsConfig": "apps/application-b2c-e2e/tsconfig.e2e.json",
+            "devServerTarget": "application-b2c:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "application-b2c:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/application-b2c-e2e/**/*.{js,ts}"]
           }
         }
       }
     }
   },
   "cli": {
-    "defaultCollection": "@nrwl/angular"
+    "defaultCollection": "@nrwl/angular",
+    "analytics": "deb0d128-5946-4a9d-94ab-fe5dcb9cc03e"
   },
   "schematics": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
     "@nrwl/angular:application": {
       "unitTestRunner": "jest",
       "e2eTestRunner": "cypress"
@@ -137,5 +258,5 @@
       "unitTestRunner": "jest"
     }
   },
-  "defaultProject": "monorepo"
+  "defaultProject": "application-b2b"
 }

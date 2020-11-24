@@ -1,13 +1,17 @@
 {
   "npmScope": "monorepo",
+  "affected": {
+    "defaultBase": "master"
+  },
   "implicitDependencies": {
     "angular.json": "*",
     "package.json": {
       "dependencies": "*",
       "devDependencies": "*"
     },
-    "tsconfig.json": "*",
+    "tsconfig.base.json": "*",
     "tslint.json": "*",
+    ".eslintrc.json": "*",
     "nx.json": "*"
   },
   "tasksRunnerOptions": {
@@ -19,12 +23,19 @@
     }
   },
   "projects": {
-    "monorepo": {
+    "application-b2b": {
       "tags": []
     },
-    "monorepo-e2e": {
+    "application-b2b-e2e": {
       "tags": [],
-      "implicitDependencies": ["monorepo"]
+      "implicitDependencies": ["application-b2b"]
+    },
+    "application-b2c": {
+      "tags": []
+    },
+    "application-b2c-e2e": {
+      "tags": [],
+      "implicitDependencies": ["application-b2c"]
     }
   }
 }
