@@ -12,7 +12,7 @@ namespace MonoRepo.Framework.Extensions.Startup
     /// </summary>
     public static class Swagger
     {
-        public static IServiceCollection RegisterSwagger(this IServiceCollection services, Action<IList<string>> includeCommentsPaths = null)
+        public static IServiceCollection RegisterSwagger(this IServiceCollection services, string title, Action<IList<string>> includeCommentsPaths = null)
         {
             services.AddSwaggerGen(
                 c =>
@@ -25,7 +25,7 @@ namespace MonoRepo.Framework.Extensions.Startup
                             description.GroupName,
                             new OpenApiInfo()
                             {
-                                Title = $"API VERSION {description.ApiVersion}",
+                                Title = $"{title}",
                                 Version = description.ApiVersion.ToString()
                             });
                     }

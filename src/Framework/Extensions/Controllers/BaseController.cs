@@ -27,6 +27,6 @@ namespace MonoRepo.Framework.Extensions.Controllers
             ? string.Empty
             : Request.Headers["Requesting-Product"].ToString();
 
-        protected IMediator Mediator => HttpContext.RequestServices.GetRequiredService<IMediator>();
+        protected IMediator mediator => HttpContext.RequestServices.GetRequiredService<IMediator>();
     }
 }
