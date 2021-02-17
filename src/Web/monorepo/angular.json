@@ -232,6 +232,235 @@
           }
         }
       }
+    },
+    "shared-ui": {
+      "projectType": "library",
+      "root": "libs/shared/ui",
+      "sourceRoot": "libs/shared/ui/src",
+      "prefix": "monorepo",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/shared/ui/src/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/ui/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "shared-data-models": {
+      "projectType": "library",
+      "root": "libs/shared/data-models",
+      "sourceRoot": "libs/shared/data-models/src",
+      "prefix": "monorepo",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/shared/data-models/src/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/data-models/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "shared-identity-b2b": {
+      "projectType": "library",
+      "root": "libs/shared/identity-b2b",
+      "sourceRoot": "libs/shared/identity-b2b/src",
+      "prefix": "monorepo",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/shared/identity-b2b/src/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/identity-b2b/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "shared-identity-b2c": {
+      "projectType": "library",
+      "root": "libs/shared/identity-b2c",
+      "sourceRoot": "libs/shared/identity-b2c/src",
+      "prefix": "monorepo",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/shared/identity-b2c/src/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/identity-b2c/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "shared-services": {
+      "projectType": "library",
+      "root": "libs/shared/services",
+      "sourceRoot": "libs/shared/services/src",
+      "prefix": "monorepo",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/services/src/**/*.ts",
+              "libs/shared/services/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/services"],
+          "options": {
+            "jestConfig": "libs/shared/services/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "application-b2b-dashboard": {
+      "projectType": "library",
+      "root": "libs/application-b2b/dashboard",
+      "sourceRoot": "libs/application-b2b/dashboard/src",
+      "prefix": "monorepo",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/application-b2b/dashboard/src/**/*.ts",
+              "libs/application-b2b/dashboard/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/application-b2b/dashboard"],
+          "options": {
+            "jestConfig": "libs/application-b2b/dashboard/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "application-b2c-dashboard": {
+      "projectType": "library",
+      "root": "libs/application-b2c/dashboard",
+      "sourceRoot": "libs/application-b2c/dashboard/src",
+      "prefix": "monorepo",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/application-b2c/dashboard/src/**/*.ts",
+              "libs/application-b2c/dashboard/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/application-b2c/dashboard"],
+          "options": {
+            "jestConfig": "libs/application-b2c/dashboard/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "application-b2b-home": {
+      "projectType": "library",
+      "root": "libs/application-b2b/home",
+      "sourceRoot": "libs/application-b2b/home/src",
+      "prefix": "monorepo",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/application-b2b/home/src/**/*.ts",
+              "libs/application-b2b/home/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/application-b2b/home"],
+          "options": {
+            "jestConfig": "libs/application-b2b/home/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "application-b2c-home": {
+      "projectType": "library",
+      "root": "libs/application-b2c/home",
+      "sourceRoot": "libs/application-b2c/home/src",
+      "prefix": "monorepo",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/application-b2c/home/src/**/*.ts",
+              "libs/application-b2c/home/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/application-b2c/home"],
+          "options": {
+            "jestConfig": "libs/application-b2c/home/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
@@ -251,11 +480,18 @@
       }
     },
     "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
       "unitTestRunner": "jest",
       "e2eTestRunner": "cypress"
     },
     "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "eslint",
       "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
     }
   },
   "defaultProject": "application-b2b"

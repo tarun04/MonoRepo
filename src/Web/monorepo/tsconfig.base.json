@@ -15,7 +15,29 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@monorepo/shared/ui": ["libs/shared/ui/src/index.ts"],
+      "@monorepo/shared/data-models": ["libs/shared/data-models/src/index.ts"],
+      "@monorepo/shared/identity-b2b": [
+        "libs/shared/identity-b2b/src/index.ts"
+      ],
+      "@monorepo/shared/identity-b2c": [
+        "libs/shared/identity-b2c/src/index.ts"
+      ],
+      "@monorepo/shared/services": ["libs/shared/services/src/index.ts"],
+      "@monorepo/application-b2b/dashboard": [
+        "libs/application-b2b/dashboard/src/index.ts"
+      ],
+      "@monorepo/application-b2c/dashboard": [
+        "libs/application-b2c/dashboard/src/index.ts"
+      ],
+      "@monorepo/application-b2b/home": [
+        "libs/application-b2b/home/src/index.ts"
+      ],
+      "@monorepo/application-b2c/home": [
+        "libs/application-b2c/home/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

@@ -1,0 +1,21 @@
+<mat-nav-list>
+  <ng-container *ngFor="let route of routes; let lastItem = last">
+    <h2 *ngIf="route.subheading != null" matSubheader>
+      {{ route.subheading }}
+    </h2>
+    <ng-container *ngFor="let item of route.subroutes">
+      <a
+        *ngIf="item.isActive"
+        mat-list-item
+        (click)="toggleSidenav()"
+        [routerLink]="item.route"
+        routerLinkActive="list-item-active"
+      >
+        <mat-icon matListIcon> {{ item.icon }} </mat-icon>
+        {{ item.title }}
+      </a>
+    </ng-container>
+
+    <mat-divider *ngIf="!lastItem"></mat-divider>
+  </ng-container>
+</mat-nav-list>
