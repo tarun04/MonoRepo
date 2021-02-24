@@ -4,4 +4,9 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Framework\Core\MonoRepo.Framework.Core.csproj" />
+    <ProjectReference Include="..\..\..\Framework\Infrastructure\MonoRepo.Framework.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
