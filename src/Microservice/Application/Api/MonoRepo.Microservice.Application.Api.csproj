@@ -8,5 +8,10 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Framework\Extensions\MonoRepo.Framework.Extensions.csproj" />
+    <ProjectReference Include="..\Infrastructure\MonoRepo.Microservice.Application.Infrastructure.csproj" />
+  </ItemGroup>
+
 
 </Project>
