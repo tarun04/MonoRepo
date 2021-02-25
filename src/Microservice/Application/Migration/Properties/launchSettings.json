@@ -1,6 +1,6 @@
 ﻿{
   "profiles": {
-    "MonoRepo.Microservice.Tenant.Migration": {
+    "MonoRepo.Microservice.Application.Migration": {
       "commandName": "Project",
       "commandLineArgs": "--use-dev-data true"
     }

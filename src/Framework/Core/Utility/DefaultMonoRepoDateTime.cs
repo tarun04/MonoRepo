@@ -4,7 +4,7 @@ using System;
 namespace MonoRepo.Framework.Core.Utility
 {
     /// <summary>
-    /// Default implementation of the Ships Date Time.
+    /// Default implementation of the MonoRepo Date Time.
     /// </summary>
     public class DefaultMonoRepoDateTime : IDateTime
     {

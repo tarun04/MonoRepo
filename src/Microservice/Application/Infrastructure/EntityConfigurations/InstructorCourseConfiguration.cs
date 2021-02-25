@@ -8,7 +8,7 @@ namespace MonoRepo.Microservice.Application.Infrastructure.EntityConfigurations
     {
         public override void Configure(EntityTypeBuilder<InstructorCourse> builder)
         {
-            builder.HasKey(k => new { k.CourseId, k.Instructor });
+            builder.HasKey(k => new { k.CourseId, k.InstructorId });
 
             builder
                 .HasOne(o => o.Instructor)

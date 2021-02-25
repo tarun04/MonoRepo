@@ -35,7 +35,7 @@ namespace MonoRepo.Microservice.IdentityServer.B2C
                 .AddLogging()
                 .RegisterApplicationInsights(Configuration)
                 .RegisterApiVersioning()
-                .RegisterSwagger()
+                .RegisterSwagger("IdentityB2C")
                 .RegisterScopedServices(Configuration)
                 .RegisterHttpClients(Configuration)
                 .RegisterMediatR(Assembly.GetAssembly(typeof(Startup)))

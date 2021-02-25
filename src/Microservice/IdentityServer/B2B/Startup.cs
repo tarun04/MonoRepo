@@ -34,7 +34,7 @@ namespace MonoRepo.Microservice.IdentityServer.B2B
                 .AddLogging()
                 .RegisterApplicationInsights(Configuration)
                 .RegisterApiVersioning()
-                .RegisterSwagger()
+                .RegisterSwagger("IdentityB2B")
                 .RegisterScopedServices(Configuration)
                 .RegisterHttpClients(Configuration)
                 .RegisterCurrentIdentityUser()

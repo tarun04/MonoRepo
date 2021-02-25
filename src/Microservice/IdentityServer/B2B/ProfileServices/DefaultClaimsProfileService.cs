@@ -21,7 +21,7 @@ using System.Threading.Tasks;
 namespace MonoRepo.Microservice.IdentityServer.B2B.ProfileServices
 {
     /// <summary>
-    /// Provides default claims that all ships 6 products need.  If a claim is needed by a product
+    /// Provides default claims that all monorepo products need.  If a claim is needed by a product
     /// that isn't provided here it will need to be generated with a subsequent call.
     /// </summary>
     public class DefaultClaimsProfileService : IProfileService
@@ -50,7 +50,7 @@ namespace MonoRepo.Microservice.IdentityServer.B2B.ProfileServices
         }
 
         /// <summary>
-        /// Builds default ships claims into security context for use in other gateways & microservices.
+        /// Builds default monorepo claims into security context for use in other gateways & microservices.
         /// </summary>
         /// <param name="context">Context used to get user information and set claims.</param>
         /// <exception cref="KeyNotFoundException">Throws if Tenant was not found in Tenant Microservice.</exception>

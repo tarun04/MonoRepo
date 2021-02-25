@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using MonoRepo.Framework.Extensions.Startup;
+using MonoRepo.Microservice.Application.Extensions.Startup;
 using MonoRepo.Microservice.Application.Infrastructure;
 
 namespace MonoRepo.Microservice.Application.Api
@@ -29,7 +30,9 @@ namespace MonoRepo.Microservice.Application.Api
         {
             services.AddControllers();
 
-            services.RegisterDbContext<ApplicationDbContext>(Configuration);
+            services
+                .RegisterScopedServices(Configuration)
+                .RegisterDbContext<ApplicationDbContext>(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
