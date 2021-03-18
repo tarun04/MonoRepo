@@ -63,7 +63,7 @@ namespace MonoRepo.Microservice.Application.Domain.Entities
 
         public ICollection<Student> Children { get; private set; }
 
-        public Parent(Guid identityUserId, string firstName, string lastName, string email, string phoneNumber, string address, int? relationTypeId)
+        public Parent(Guid identityUserId, string firstName, string lastName, string email, string phoneNumber, int? phoneNumberTypeId, string address, int? relationTypeId)
         {
             if (identityUserId == default) throw new ArgumentException(null, nameof(identityUserId));
             if (string.IsNullOrEmpty(firstName)) throw new ArgumentException(null, nameof(firstName));
@@ -77,16 +77,19 @@ namespace MonoRepo.Microservice.Application.Domain.Entities
             LastName = lastName;
             Email = email;
             PhoneNumber = phoneNumber;
+            PhoneNumberTypeId = phoneNumberTypeId;
             Address = address;
             RelationTypeId = relationTypeId;
         }
 
-        public void UpdateRegistrationInformation(string phoneNumber, string address)
+        public void UpdateRegistrationInformation(string phoneNumber, int? phoneNumberTypeId, string otherPhoneNumber, string address)
         {
             if (string.IsNullOrEmpty(phoneNumber)) throw new ArgumentException(null, nameof(phoneNumber));
             if (string.IsNullOrEmpty(address)) throw new ArgumentException(null, nameof(address));
 
             PhoneNumber = phoneNumber;
+            PhoneNumberTypeId = phoneNumberTypeId;
+            OtherPhoneNumber = otherPhoneNumber;
             Address = address;
         }
     }

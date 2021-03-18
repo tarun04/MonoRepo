@@ -63,7 +63,7 @@ namespace MonoRepo.Microservice.Application.Domain.Entities
 
         public IEnumerable<InstructorCourse> InstructorCourses { get; private set; }
 
-        public Instructor(Guid identityUserId, string firstName, string lastName, string email, string phoneNumber, string address, DateTime? joiningDate)
+        public Instructor(Guid identityUserId, string firstName, string lastName, string email, string phoneNumber, int? phoneNumberTypeId, string address, DateTime? joiningDate)
         {
             if (identityUserId == default) throw new ArgumentException(null, nameof(identityUserId));
             if (string.IsNullOrEmpty(firstName)) throw new ArgumentException(null, nameof(firstName));
@@ -77,16 +77,19 @@ namespace MonoRepo.Microservice.Application.Domain.Entities
             LastName = lastName;
             Email = email;
             PhoneNumber = phoneNumber;
+            PhoneNumberTypeId = phoneNumberTypeId;
             Address = address;
             JoiningDate = joiningDate;
         }
 
-        public void UpdateRegistrationInformation(string phoneNumber, string address)
+        public void UpdateRegistrationInformation(string phoneNumber, int? phoneNumberTypeId, string otherPhoneNumber, string address)
         {
             if (string.IsNullOrEmpty(phoneNumber)) throw new ArgumentException(null, nameof(phoneNumber));
             if (string.IsNullOrEmpty(address)) throw new ArgumentException(null, nameof(address));
 
             PhoneNumber = phoneNumber;
+            PhoneNumberTypeId = phoneNumberTypeId;
+            OtherPhoneNumber = otherPhoneNumber;
             Address = address;
         }
     }

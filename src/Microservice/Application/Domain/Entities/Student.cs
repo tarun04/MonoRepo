@@ -79,7 +79,7 @@ namespace MonoRepo.Microservice.Application.Domain.Entities
         /// <summary>
         /// E.g. Mr.
         /// </summary>
-        public string NameSuffix { get; set; }
+        public string NameSuffix { get; private set; }
 
         /// <summary>
         /// Id of the Parent
