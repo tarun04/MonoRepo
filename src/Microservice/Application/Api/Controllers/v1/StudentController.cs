@@ -5,9 +5,9 @@ using MonoRepo.Framework.Infrastructure.Models;
 using MonoRepo.Microservice.Application.Command.CommandHandlers.Student.AddStudent;
 using MonoRepo.Microservice.Application.Command.CommandHandlers.Student.RemoveStudent;
 using MonoRepo.Microservice.Application.Command.CommandHandlers.Student.UpdateStudent;
+using MonoRepo.Microservice.Application.Domain.Entities;
 using MonoRepo.Microservice.Application.Query.GetPagedStudents;
 using MonoRepo.Microservice.Application.Query.GetStudentById;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace MonoRepo.Microservice.Application.Api.Controllers.v1
@@ -24,7 +24,7 @@ namespace MonoRepo.Microservice.Application.Api.Controllers.v1
         [ProducesResponseType(typeof(PagedResult<StudentSummaryViewModel>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [HttpPost()]
+        [HttpPost("paged-result")]
         public async Task<IActionResult> GetPagedStudents([FromBody] GetPagedStudentsQuery query)
         {
             return Ok(await mediator.Send(query));
@@ -38,7 +38,7 @@ namespace MonoRepo.Microservice.Application.Api.Controllers.v1
         [ProducesResponseType(typeof(GetStudentByIdViewModel), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [HttpGet("{applicationId}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetStudentById(int id)
         {
             return Ok(await mediator.Send(new GetStudentByIdQuery { Id = id }));

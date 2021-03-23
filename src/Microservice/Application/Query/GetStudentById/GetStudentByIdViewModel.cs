@@ -85,7 +85,7 @@ namespace MonoRepo.Microservice.Application.Query.GetStudentById
         /// </summary>
         public ParentViewModel Parent { get; set; }
 
-        public ICollection<CourseViewModel> StudentCourses { get; set; }
+        public ICollection<StudentCourseViewModel> StudentCourses { get; set; }
     }
 
     public class ParentViewModel 
@@ -111,7 +111,7 @@ namespace MonoRepo.Microservice.Application.Query.GetStudentById
         public int? RelationTypeId { get; set; }
     }
 
-    public class CourseViewModel
+    public class StudentCourseViewModel
     {
         /// <summary>
         /// Course unique identifier

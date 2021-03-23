@@ -1,0 +1,21 @@
+﻿{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:62782",
+      "sslPort": 44394
+    }
+  },
+  "profiles": {
+    "MonoRepo.Gateway.ApplicationB2b.Api": {
+      "commandName": "Project",
+      "dotnetRunMessages": "true",
+      //"launchBrowser": true,
+      "applicationUrl": "https://localhost:5559",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Local"
+      }
+    }
+  }
+}

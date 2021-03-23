@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
-namespace MonoRepo.Gateway.Application.Api
+namespace MonoRepo.Gateway.ApplicationB2b.Api
 {
     public class Program
     {
@@ -20,7 +15,11 @@ namespace MonoRepo.Gateway.Application.Api
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+                    {
+                        config.AddJsonFile($"ocelot.{hostingContext.HostingEnvironment.EnvironmentName}.json", optional: false, reloadOnChange: true)
+                              .AddEnvironmentVariables();
+                    }).UseStartup<Startup>();
                 });
     }
 }

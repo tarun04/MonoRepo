@@ -37,7 +37,7 @@ namespace MonoRepo.Microservice.Application.Query.GetInstructorById
                                            PhoneNumberTypeId = x.PhoneNumberTypeId,
                                            OtherPhoneNumber = x.OtherPhoneNumber,
                                            Address = x.Address,
-                                           InstructorCourses = x.InstructorCourses.Select(y => new CourseViewModel
+                                           InstructorCourses = x.InstructorCourses.Select(y => new InstructorCourseViewModel
                                            {
                                                Id = y.CourseId,
                                                Name = y.Course.Name

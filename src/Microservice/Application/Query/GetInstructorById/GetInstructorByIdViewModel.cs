@@ -49,10 +49,10 @@ namespace MonoRepo.Microservice.Application.Query.GetInstructorById
         /// </summary>
         public string Address { get; set; }
 
-        public ICollection<CourseViewModel> InstructorCourses { get; set; }
+        public ICollection<InstructorCourseViewModel> InstructorCourses { get; set; }
     }
 
-    public class CourseViewModel
+    public class InstructorCourseViewModel
     {
         /// <summary>
         /// Course unique identifier

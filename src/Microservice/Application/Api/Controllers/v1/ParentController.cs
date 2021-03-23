@@ -4,6 +4,7 @@ using MonoRepo.Framework.Extensions.Controllers;
 using MonoRepo.Microservice.Application.Command.CommandHandlers.Parent.AddParent;
 using MonoRepo.Microservice.Application.Command.CommandHandlers.Parent.RemoveParent;
 using MonoRepo.Microservice.Application.Command.CommandHandlers.Parent.UpdateParent;
+using MonoRepo.Microservice.Application.Domain.Entities;
 using MonoRepo.Microservice.Application.Query.GetParentById;
 using System.Threading.Tasks;
 
@@ -22,7 +23,7 @@ namespace MonoRepo.Microservice.Application.Api.Controllers.v1
         [ProducesResponseType(typeof(GetParentByIdViewModel), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [HttpGet("{applicationId}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetParentById(int id)
         {
             return Ok(await mediator.Send(new GetParentByIdQuery { Id = id }));

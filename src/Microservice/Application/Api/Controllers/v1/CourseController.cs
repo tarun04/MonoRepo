@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using MonoRepo.Framework.Extensions.Controllers;
 using MonoRepo.Microservice.Application.Command.CommandHandlers.Course.AddCourse;
 using MonoRepo.Microservice.Application.Command.CommandHandlers.Course.RemoveCourse;
+using MonoRepo.Microservice.Application.Domain.Entities;
 using MonoRepo.Microservice.Application.Query.GetCourses;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -21,7 +22,7 @@ namespace MonoRepo.Microservice.Application.Api.Controllers.v1
         [ProducesResponseType(typeof(List<GetCoursesViewModel>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [HttpPost()]
+        [HttpGet]
         public async Task<IActionResult> GetCourses([FromBody] GetCoursesQuery query)
         {
             return Ok(await mediator.Send(query));

@@ -20,6 +20,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Framework\Extensions\MonoRepo.Framework.Extensions.csproj" />
+    <ProjectReference Include="..\..\..\Framework\Identity\MonoRepo.Framework.Identity.csproj" />
+    <ProjectReference Include="..\..\..\Framework\Utilities\MonoRepo.Framework.Utilities.csproj" />
     <ProjectReference Include="..\Command\MonoRepo.Microservice.Application.Command.csproj" />
     <ProjectReference Include="..\Infrastructure\MonoRepo.Microservice.Application.Infrastructure.csproj" />
     <ProjectReference Include="..\Query\MonoRepo.Microservice.Application.Query.csproj" />

@@ -43,7 +43,7 @@ namespace MonoRepo.Microservice.Application.Query.GetStudentById
                                            MiddleName = x.MiddleName,
                                            NameSuffix = x.NameSuffix,
                                            ParentId = x.ParentId,
-                                           StudentCourses = x.StudentCourses.Select(y => new CourseViewModel
+                                           StudentCourses = x.StudentCourses.Select(y => new StudentCourseViewModel
                                            {
                                                Id = y.CourseId,
                                                Name = y.Course.Name

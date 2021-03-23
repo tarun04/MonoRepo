@@ -4,6 +4,8 @@ using MonoRepo.Framework.Extensions.Controllers;
 using MonoRepo.Microservice.Application.Command.CommandHandlers.Instructor.AddInstructor;
 using MonoRepo.Microservice.Application.Command.CommandHandlers.Instructor.RemoveInstructor;
 using MonoRepo.Microservice.Application.Command.CommandHandlers.Instructor.UpdateInstructor;
+using MonoRepo.Microservice.Application.Domain.Entities;
+using MonoRepo.Microservice.Application.Query.GetInstructorById;
 using MonoRepo.Microservice.Application.Query.GetInstructors;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -22,10 +24,24 @@ namespace MonoRepo.Microservice.Application.Api.Controllers.v1
         [ProducesResponseType(typeof(List<GetInstructorsViewModel>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [HttpPost()]
+        [HttpGet]
         public async Task<IActionResult> GetInstructors([FromBody] GetInstructorsQuery query)
         {
             return Ok(await mediator.Send(query));
+        }
+
+        /// <summary>
+        /// Retrieves instructor for a given instructor Id.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns><see cref="GetInstructorByIdViewModel"/></returns>
+        [ProducesResponseType(typeof(GetInstructorByIdViewModel), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetInstructorById(int id)
+        {
+            return Ok(await mediator.Send(new GetInstructorByIdQuery { Id = id }));
         }
 
         /// <summary>
