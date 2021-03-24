@@ -461,6 +461,158 @@
           }
         }
       }
+    },
+    "shared-application-services": {
+      "projectType": "library",
+      "root": "libs/shared/application/services",
+      "sourceRoot": "libs/shared/application/services/src",
+      "prefix": "monorepo",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/application/services/src/**/*.ts",
+              "libs/shared/application/services/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/application/services"],
+          "options": {
+            "jestConfig": "libs/shared/application/services/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "shared-application-types": {
+      "projectType": "library",
+      "root": "libs/shared/application/types",
+      "sourceRoot": "libs/shared/application/types/src",
+      "prefix": "monorepo",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/application/types/src/**/*.ts",
+              "libs/shared/application/types/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/application/types"],
+          "options": {
+            "jestConfig": "libs/shared/application/types/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "shared-application-state-students-state": {
+      "projectType": "library",
+      "root": "libs/shared/application/state/students-state",
+      "sourceRoot": "libs/shared/application/state/students-state/src",
+      "prefix": "monorepo",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/application/state/students-state/src/**/*.ts",
+              "libs/shared/application/state/students-state/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/application/state/students-state"],
+          "options": {
+            "jestConfig": "libs/shared/application/state/students-state/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "shared-application-state-courses-state": {
+      "projectType": "library",
+      "root": "libs/shared/application/state/courses-state",
+      "sourceRoot": "libs/shared/application/state/courses-state/src",
+      "prefix": "monorepo",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/application/state/courses-state/src/**/*.ts",
+              "libs/shared/application/state/courses-state/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/application/state/courses-state"],
+          "options": {
+            "jestConfig": "libs/shared/application/state/courses-state/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "shared-application-state-instructors-state": {
+      "projectType": "library",
+      "root": "libs/shared/application/state/instructors-state",
+      "sourceRoot": "libs/shared/application/state/instructors-state/src",
+      "prefix": "monorepo",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/application/state/instructors-state/src/**/*.ts",
+              "libs/shared/application/state/instructors-state/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/shared/application/state/instructors-state"
+          ],
+          "options": {
+            "jestConfig": "libs/shared/application/state/instructors-state/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "shared-application-state-parents-state": {
+      "projectType": "library",
+      "root": "libs/shared/application/state/parents-state",
+      "sourceRoot": "libs/shared/application/state/parents-state/src",
+      "prefix": "monorepo",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/application/state/parents-state/src/**/*.ts",
+              "libs/shared/application/state/parents-state/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/application/state/parents-state"],
+          "options": {
+            "jestConfig": "libs/shared/application/state/parents-state/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

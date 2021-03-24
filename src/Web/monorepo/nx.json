@@ -34,6 +34,12 @@
     "application-b2b-dashboard": { "tags": [] },
     "application-b2c-dashboard": { "tags": [] },
     "application-b2b-home": { "tags": [] },
-    "application-b2c-home": { "tags": [] }
+    "application-b2c-home": { "tags": [] },
+    "shared-application-services": { "tags": [] },
+    "shared-application-types": { "tags": [] },
+    "shared-application-state-students-state": { "tags": [] },
+    "shared-application-state-courses-state": { "tags": [] },
+    "shared-application-state-instructors-state": { "tags": [] },
+    "shared-application-state-parents-state": { "tags": [] }
   }
 }

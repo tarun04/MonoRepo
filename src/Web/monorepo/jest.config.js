@@ -11,5 +11,11 @@ module.exports = {
     '<rootDir>/libs/application-b2c/dashboard',
     '<rootDir>/libs/application-b2b/home',
     '<rootDir>/libs/application-b2c/home',
+    '<rootDir>/libs/shared/application/services',
+    '<rootDir>/libs/shared/application/types',
+    '<rootDir>/libs/shared/application/state/students-state',
+    '<rootDir>/libs/shared/application/state/courses-state',
+    '<rootDir>/libs/shared/application/state/instructors-state',
+    '<rootDir>/libs/shared/application/state/parents-state',
   ],
 };

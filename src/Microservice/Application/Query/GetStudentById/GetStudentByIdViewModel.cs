@@ -38,7 +38,7 @@ namespace MonoRepo.Microservice.Application.Query.GetStudentById
         /// <summary>
         /// Type of phone number (mobile/landline) 
         /// </summary>
-        public int? PhoneNumberTypeId { get; set; }
+        public string PhoneNumberTypeName { get; set; }
 
         /// <summary>
         /// Student's Other Phone Number

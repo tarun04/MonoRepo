@@ -36,6 +36,24 @@
       ],
       "@monorepo/application-b2c/home": [
         "libs/application-b2c/home/src/index.ts"
+      ],
+      "@monorepo/shared/application/services": [
+        "libs/shared/application/services/src/index.ts"
+      ],
+      "@monorepo/shared/application/types": [
+        "libs/shared/application/types/src/index.ts"
+      ],
+      "@monorepo/shared/application/state/students-state": [
+        "libs/shared/application/state/students-state/src/index.ts"
+      ],
+      "@monorepo/shared/application/state/courses-state": [
+        "libs/shared/application/state/courses-state/src/index.ts"
+      ],
+      "@monorepo/shared/application/state/instructors-state": [
+        "libs/shared/application/state/instructors-state/src/index.ts"
+      ],
+      "@monorepo/shared/application/state/parents-state": [
+        "libs/shared/application/state/parents-state/src/index.ts"
       ]
     }
   },

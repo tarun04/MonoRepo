@@ -37,7 +37,7 @@ namespace MonoRepo.Microservice.Application.Query.GetParentById
         /// <summary>
         /// Type of phone number (mobile/landline) 
         /// </summary>
-        public int? PhoneNumberTypeId { get; set; }
+        public string PhoneNumberTypeName { get; set; }
 
         /// <summary>
         /// Parent's Other Phone Number

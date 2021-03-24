@@ -1,6 +1,8 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
+using MonoRepo.Framework.Core.Domain;
 using MonoRepo.Framework.Core.Security;
+using MonoRepo.Microservice.Application.Domain.Enums;
 using MonoRepo.Microservice.Application.Infrastructure;
 using System.Linq;
 using System.Threading;
@@ -34,7 +36,7 @@ namespace MonoRepo.Microservice.Application.Query.GetInstructorById
                                            Gender = x.Gender,
                                            Email = x.Email,
                                            PhoneNumber = x.PhoneNumber,
-                                           PhoneNumberTypeId = x.PhoneNumberTypeId,
+                                           PhoneNumberTypeName = x.PhoneNumberTypeId.HasValue ? Enumeration.FromValue<PhoneType>(x.PhoneNumberTypeId.Value).Name : null,
                                            OtherPhoneNumber = x.OtherPhoneNumber,
                                            Address = x.Address,
                                            InstructorCourses = x.InstructorCourses.Select(y => new InstructorCourseViewModel
