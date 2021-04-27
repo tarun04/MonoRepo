@@ -2,9 +2,9 @@ import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
-import { environment } from './environments/environment';
+import { ConfigFactory } from '@monorepo/shared/app-config';
 
-if (environment.production) {
+if (ConfigFactory().production) {
   enableProdMode();
 }
 

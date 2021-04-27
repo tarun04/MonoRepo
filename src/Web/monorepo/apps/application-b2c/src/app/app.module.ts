@@ -1,10 +1,11 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Routes, RouterModule } from '@angular/router';
 
+import { ConfigServiceProvider } from '@monorepo/shared/app-config';
 import { SidenavService } from '@monorepo/shared/services';
 import { SharedUiModule } from '@monorepo/shared/ui';
 import { AppComponent } from './app.component';
@@ -41,7 +42,7 @@ const routes: Routes = [
     MatToolbarModule,
     SharedUiModule,
   ],
-  providers: [SidenavService],
+  providers: [ConfigServiceProvider, SidenavService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

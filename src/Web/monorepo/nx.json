@@ -40,6 +40,7 @@
     "shared-application-state-students-state": { "tags": [] },
     "shared-application-state-courses-state": { "tags": [] },
     "shared-application-state-instructors-state": { "tags": [] },
-    "shared-application-state-parents-state": { "tags": [] }
+    "shared-application-state-parents-state": { "tags": [] },
+    "shared-app-config": { "tags": [] }
   }
 }

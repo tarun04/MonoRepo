@@ -23,7 +23,9 @@
             "aot": true,
             "assets": [
               "apps/application-b2b/src/favicon.ico",
-              "apps/application-b2b/src/assets"
+              "apps/application-b2b/src/assets",
+              "apps/application-b2b/src/config.js",
+              "apps/application-b2b/src/config-token.js"
             ],
             "styles": ["apps/application-b2b/src/styles.scss"],
             "scripts": []
@@ -139,7 +141,9 @@
             "aot": true,
             "assets": [
               "apps/application-b2c/src/favicon.ico",
-              "apps/application-b2c/src/assets"
+              "apps/application-b2c/src/assets",
+              "apps/application-b2c/src/config.js",
+              "apps/application-b2c/src/config-token.js"
             ],
             "styles": ["apps/application-b2c/src/styles.scss"],
             "scripts": []
@@ -609,6 +613,31 @@
           "outputs": ["coverage/libs/shared/application/state/parents-state"],
           "options": {
             "jestConfig": "libs/shared/application/state/parents-state/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "shared-app-config": {
+      "projectType": "library",
+      "root": "libs/shared/app-config",
+      "sourceRoot": "libs/shared/app-config/src",
+      "prefix": "monorepo",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/app-config/src/**/*.ts",
+              "libs/shared/app-config/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/app-config"],
+          "options": {
+            "jestConfig": "libs/shared/app-config/jest.config.js",
             "passWithNoTests": true
           }
         }

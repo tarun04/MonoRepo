@@ -17,5 +17,6 @@ module.exports = {
     '<rootDir>/libs/shared/application/state/courses-state',
     '<rootDir>/libs/shared/application/state/instructors-state',
     '<rootDir>/libs/shared/application/state/parents-state',
+    '<rootDir>/libs/shared/app-config',
   ],
 };

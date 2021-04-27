@@ -38,6 +38,7 @@ namespace MonoRepo.Microservice.Application.Query.GetParentById
                                            PhoneNumberTypeName = x.PhoneNumberTypeId.HasValue ? Enumeration.FromValue<PhoneType>(x.PhoneNumberTypeId.Value).Name : null,
                                            OtherPhoneNumber = x.OtherPhoneNumber,
                                            Address = x.Address,
+                                           RelationTypeName = x.RelationTypeId.HasValue ? Enumeration.FromValue<RelationType>(x.RelationTypeId.Value).Name : null,
                                            Children = x.Children.Select(y => new StudentViewModel
                                            {
                                                Id = y.Id,

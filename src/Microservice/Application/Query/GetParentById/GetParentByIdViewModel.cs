@@ -49,6 +49,11 @@ namespace MonoRepo.Microservice.Application.Query.GetParentById
         /// </summary>
         public string Address { get; set; }
 
+        /// <summary>
+        /// Type of relation (father/mother/guardian) 
+        /// </summary>
+        public string RelationTypeName { get; set; }
+
         public ICollection<StudentViewModel> Children { get; set; }
     }
 
