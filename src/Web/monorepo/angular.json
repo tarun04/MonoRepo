@@ -642,6 +642,31 @@
           }
         }
       }
+    },
+    "shared-framework-storage": {
+      "projectType": "library",
+      "root": "libs/shared/framework/storage",
+      "sourceRoot": "libs/shared/framework/storage/src",
+      "prefix": "monorepo",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/framework/storage/src/**/*.ts",
+              "libs/shared/framework/storage/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/framework/storage"],
+          "options": {
+            "jestConfig": "libs/shared/framework/storage/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

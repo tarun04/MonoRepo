@@ -1,18 +1,17 @@
-import { ModuleWithProviders, NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { APP_CONFIG, InjectableConfig } from './config-models/gateway-config';
+import { ConfigService } from './services/config.service';
+import { ConfigFactory } from './providers/config.service.provider';
 
 @NgModule({
   imports: [CommonModule],
-  providers: [],
+  providers: [
+    ConfigService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: ConfigFactory,
+      deps: [ConfigService],
+    },
+  ],
 })
-export class AppConfigModule {
-  static forRoot(
-    environment: InjectableConfig
-  ): ModuleWithProviders<AppConfigModule> {
-    return {
-      ngModule: AppConfigModule,
-      providers: [{ provide: APP_CONFIG, useValue: environment }],
-    };
-  }
-}
+export class AppConfigModule {}

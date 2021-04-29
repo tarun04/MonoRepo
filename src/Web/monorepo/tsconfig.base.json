@@ -55,7 +55,10 @@
       "@monorepo/shared/application/state/parents-state": [
         "libs/shared/application/state/parents-state/src/index.ts"
       ],
-      "@monorepo/shared/app-config": ["libs/shared/app-config/src/index.ts"]
+      "@monorepo/shared/app-config": ["libs/shared/app-config/src/index.ts"],
+      "@monorepo/shared/framework/storage": [
+        "libs/shared/framework/storage/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
